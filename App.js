@@ -2,12 +2,15 @@ import { StyleSheet, Button, View,TextInput,TouchableOpacity,Text } from 'react-
 import React,{useEffect,useState} from 'react'
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import {exStyle} from './config/styles'
+import UserData from './src/screens/UserData'
 
 const App = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [display, setDisplay] = useState(false);
+  // let name1 = 'peter'
+  const [num,setNum] = useState('Tony');
 
  const clearData = () => {
     setDisplay(false)
@@ -80,6 +83,11 @@ const App = () => {
           :null
         }
       </View>
+      
+      <TouchableOpacity style = {exStyle.Btn} onPress={()=>setNum('spiderman')}>
+        <Text style={exStyle.BtnText}>Update Data</Text>
+      </TouchableOpacity>
+      <UserData name={num} age = {29} height = {6}/>
       
     </View>
   )
