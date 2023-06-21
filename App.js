@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react'
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import {exStyle} from './config/styles'
 import UserData from './src/screens/UserData'
+import UserCustom from './src/components/UserCustom';
 
 const App = () => {
   const users = [
@@ -119,16 +120,16 @@ const App = () => {
     </View>
   )
 }
-const UserCustom = (props) => {
-  const item = props.data
-  return(
-    <View style={styles.box}>
-        <Text style={styles.item}>{item.id}</Text>
-        <Text style={styles.item}>{item.name}</Text>
-        <Text style={styles.item}>{item.email}</Text>
-    </View>
-  )
-}
+// const UserCustom = (props) => {
+//   const item = props.data
+//   return(
+//     <View style={styles.box}>
+//         <Text style={styles.item}>{item.id}</Text>
+//         <Text style={styles.item}>{item.name}</Text>
+//         <Text style={styles.item}>{item.email}</Text>
+//     </View>
+//   )
+// }
 
 const styles = StyleSheet.create({
   inputText:{
@@ -141,19 +142,19 @@ const styles = StyleSheet.create({
     fontSize:18,
     borderRadius:20
   },
-  box:{
-    flexDirection:'row',
-    borderColor:'skyblue',
-    borderWidth:2,
-    marginBottom:6,
-  },
-  item:{
-    fontSize:20,
-    color:'black',
-    borderWidth:1,
-    textAlignVertical:'center',
-    textAlign:'center'
-  }
+  // box:{
+  //   flexDirection:'row',
+  //   borderColor:'skyblue',
+  //   borderWidth:2,
+  //   marginBottom:6,
+  // },
+  // item:{
+  //   fontSize:20,
+  //   color:'black',
+  //   borderWidth:1,
+  //   textAlignVertical:'center',
+  //   textAlign:'center'
+  // }
   
   
 });
