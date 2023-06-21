@@ -1,10 +1,32 @@
-import { StyleSheet, Button, View,TextInput,TouchableOpacity,Text } from 'react-native'
+import { StyleSheet, Button, View,TextInput,TouchableOpacity,Text,FlatList } from 'react-native'
 import React,{useEffect,useState} from 'react'
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import {exStyle} from './config/styles'
 import UserData from './src/screens/UserData'
 
 const App = () => {
+  const users = [
+    {
+      id:1,
+      name:'Mujahid Akhtar',
+      email:"mujhaid@gmail.com"
+    },
+    {
+      id:2,
+      name:'sardar jalil',
+      email:"sardar@gmail.com"
+    },
+    {
+      id:3,
+      name:'zeshan',
+      email:"zeshan@gmail.com"
+    },
+    {
+      id:4,
+      name:'qalab',
+      email:"qalab@gmail.com"
+    },
+  ]
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -88,7 +110,22 @@ const App = () => {
         <Text style={exStyle.BtnText}>Update Data</Text>
       </TouchableOpacity>
       <UserData name={num} age = {29} height = {6}/>
-      
+      <FlatList 
+        data = {users}
+        renderItem={({item})=><UserCustom data = {item}/>
+          
+        }
+      />     
+    </View>
+  )
+}
+const UserCustom = (props) => {
+  const item = props.data
+  return(
+    <View style={styles.box}>
+        <Text style={styles.item}>{item.id}</Text>
+        <Text style={styles.item}>{item.name}</Text>
+        <Text style={styles.item}>{item.email}</Text>
     </View>
   )
 }
@@ -104,6 +141,19 @@ const styles = StyleSheet.create({
     fontSize:18,
     borderRadius:20
   },
+  box:{
+    flexDirection:'row',
+    borderColor:'skyblue',
+    borderWidth:2,
+    marginBottom:6,
+  },
+  item:{
+    fontSize:20,
+    color:'black',
+    borderWidth:1,
+    textAlignVertical:'center',
+    textAlign:'center'
+  }
   
   
 });
